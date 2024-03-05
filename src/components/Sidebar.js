@@ -116,7 +116,7 @@ const Sidebar  = () => {
           </div>
         </div>
       </div>
-      <div className='flex flex-col items-center mx-2 md:mt-2'>
+      <div className='flex flex-col items-center mx-2 md:mt-2 mt-4'>
         <Fetchdata filters={filters}/>
       </div>
     </div>
