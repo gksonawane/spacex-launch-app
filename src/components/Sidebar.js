@@ -31,7 +31,7 @@ const Sidebar  = () => {
     setFilters(prevFilters => ({
       ...prevFilters,
       successfulLaunch: true,
-      successfulLanding: null, // Reset successful landing filter
+      successfulLanding: null, // Reseting successful landing filter
     }));
   };
 
@@ -39,7 +39,7 @@ const Sidebar  = () => {
     setFilters(prevFilters => ({
       ...prevFilters,
       successfulLaunch: false,
-      successfulLanding: null, // Reset successful landing filter
+      successfulLanding: null, // Reseting successful landing filter
     }));
   };
 
@@ -47,7 +47,7 @@ const Sidebar  = () => {
     setFilters(prevFilters => ({
       ...prevFilters,
       successfulLanding: true,
-      successfulLaunch: null, // Reset successful launch filter
+      successfulLaunch: null, // Reseting successful launch filter
     }));
   };
 
@@ -55,7 +55,7 @@ const Sidebar  = () => {
     setFilters(prevFilters => ({
       ...prevFilters,
       successfulLanding: false,
-      successfulLaunch: null, // Reset successful launch filter
+      successfulLaunch: null, // Reseting successful launch filter
     }));
   };
 

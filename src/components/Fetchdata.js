@@ -12,7 +12,7 @@ const Fetchdata = ({ filters }) => {
     setLoading(true);
     let apiUrl = `https://api.spaceXdata.com/v3/launches?limit=${perPage}&offset=${(page - 1) * perPage}`;
 
-    // Apply filters if they are provided
+    // Applying filters when they are provided
     if (filters) {
       const { launchYear, successfulLaunch, successfulLanding } = filters;
 
@@ -26,7 +26,7 @@ const Fetchdata = ({ filters }) => {
         apiUrl += `&land_success=${successfulLanding}`;
       }
     }
-    // Fetch data from the API
+    // Fetching data from the API
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
@@ -49,7 +49,7 @@ const Fetchdata = ({ filters }) => {
   };
 
   useEffect(() => {
-    setPage(1); // Reset page to 1 when filters change
+    setPage(1); // Reseting page to 1 when filters change
   }, [filters]);
 
   if (loading) {
@@ -86,7 +86,7 @@ const Fetchdata = ({ filters }) => {
           Prev
         </button>
         <button
-          className='bg-green-400 px-4 py-2 rounded-lg ml-2 hover:bg-green-800 hover:text-white transition ease-out'
+          className='bg-green-400 px-4 py-2 rounded-lg ml-2 hover:bg-green-800 hover:text-white hover:cursor-pointer transition ease-out'
           onClick={handleNextPage}
           disabled={launches.length < perPage}
         >
