@@ -67,7 +67,7 @@ const Fetchdata = ({ filters }) => {
               alt={`Mission Patch for ${launch.mission_name}`}
               className='h-[250px] w-[290px] md:h-[150px] md:w-[150px] object-contain mx-auto mb-2'
             />
-            <h3 className='text-lg  font-bold bg-white text-violet-800'>{launch.mission_name} #{launch.flight_number}</h3>
+            <h3 className='text-lg  font-bold bg-white text-violet-800 font-title'>{launch.mission_name} #{launch.flight_number}</h3>
             <p className='text-sm bg-white font-sans font-semibold'>Mission ID: {launch.flight_number}</p>
             <p className='text-sm bg-white font-semibold'>Launch Year: {launch.launch_year}</p>
             <p className='text-sm bg-white font-semibold'>Launch Success: {launch.launch_success ? 'Yes' : 'No'}</p>

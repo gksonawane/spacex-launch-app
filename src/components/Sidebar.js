@@ -73,15 +73,15 @@ const Sidebar  = () => {
 
   return (
     <div className='sm:flex md:mx-2 '>
-      <div className='m-2 w-auto p-3 bg-white h-auto md:w-60  sm:w-80 rounded-sm grid-col-2'>
-        <span className='bg-inherit block text-2xl font-bold'>Filters</span>
-        <span className='bg-inherit block text-center'>Launch Year</span>
+      <div className='m-2 w-auto p-3 bg-white h-auto md:w-[400px]  sm:w-80 rounded-sm grid-col-2'>
+        <span className='bg-inherit block text-2xl font-my-font'>Filters</span>
+        <span className='bg-inherit block text-[20px] font-semibold text-center'>Launch Year</span>
         <hr className='w-[160px] my-2 mx-auto border-black' />
         <div className='flex flex-wrap justify-center gap-1 bg-white '>
           {arr.map((item, idx) => (
             <button
               key={idx}
-              className={`h-8  m-1 rounded-sm transition ease-out hover:bg-green-800 hover:text-white ${item ? 'bg-green-800 text-white' : 'bg-green-400'}`}
+              className={`h-8  m-1 rounded-md transition ease-out hover:bg-green-800 hover:text-white ${item ? 'bg-green-800 text-white' : 'bg-green-400'}`}
               onClick={() => handleIndex(idx)}
               style={{ flexBasis: 'calc(50% - 40px)' }}
             >
@@ -90,7 +90,11 @@ const Sidebar  = () => {
           ))}
         </div>
         <div className='mt-[8px] bg-inherit'>
-          <span className='bg-white block text-center'>Successful Launch</span>
+          <span 
+          className='bg-white block text-center text-[20px] font-semibold'
+          >
+            Successful Launch
+          </span>
           <hr className='w-[160px] my-2 mx-auto border-black' />
           <div className='bg-inherit flex justify-center gap-14'>
             <button
@@ -108,7 +112,7 @@ const Sidebar  = () => {
           </div>
         </div>
         <div className='mt-[8px] bg-inherit'>
-          <span className='bg-white block text-center'>Successful Landing</span>
+          <span className='bg-white block text-[20px] font-semibold text-center'>Successful Landing</span>
           <hr className='w-[160px] my-2 mx-auto border-black' />
           <div className='bg-inherit flex justify-center gap-14'>
             <button
