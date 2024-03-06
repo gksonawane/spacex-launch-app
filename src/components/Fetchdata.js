@@ -58,10 +58,10 @@ const Fetchdata = ({ filters }) => {
 
   return (
     <div className='md:h-60 mb-4 md:48'>
-      <div className='grid grid-cols-1 md:flex md:flex-wrap gap-4 '>
+      <div className='grid grid-cols-1  md:flex md:flex-wrap gap-4 '>
 
         {launches.length === 0 ? <BlankPage /> : (launches.map(launch => (
-          <div key={launch.flight_number} className='border p-8 bg-white h-auto md:mx-4 sm:w-56 md:w-48 rounded-md'>
+          <div key={launch.flight_number} className='border p-8 bg-white h-auto md:mx-4 sm:w-56 md:w-48 transition ease-out hover:scale-125 hover:shadow-gray-900 hover:cursor-pointer hover:shadow-xl rounded-md'>
             <img
               src={launch.links.mission_patch_small}
               alt={`Mission Patch for ${launch.mission_name}`}

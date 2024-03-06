@@ -5,6 +5,7 @@ const year = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 
 
 const Sidebar  = () => {
   const [arr, setArr] = useState(year.map(() => false));
+
   
   const [filters, setFilters] = useState({
     launchYear: null,
@@ -14,7 +15,7 @@ const Sidebar  = () => {
 
   const handleIndex = (idx) => {
     setArr(prevArr => {
-      const newArr = prevArr.map((item, index) => {
+      const newArr = prevArr.map((_, index) => {
         return index === idx;
       });
       return newArr;
@@ -59,6 +60,15 @@ const Sidebar  = () => {
     }));
   };
 
+  // Reseting filters
+  const handleFilters = () => {
+    setArr(year.map(() => false)); // Reset launch year buttons
+    setFilters({
+      launchYear: null,
+      successfulLaunch: null,
+      successfulLanding: null,
+    });
+  }
   
 
   return (
@@ -71,7 +81,7 @@ const Sidebar  = () => {
           {arr.map((item, idx) => (
             <button
               key={idx}
-              className={`h-6  m-1 rounded-sm ${item ? 'bg-green-800 text-white' : 'bg-green-400'}`}
+              className={`h-8  m-1 rounded-sm transition ease-out hover:bg-green-800 hover:text-white ${item ? 'bg-green-800 text-white' : 'bg-green-400'}`}
               onClick={() => handleIndex(idx)}
               style={{ flexBasis: 'calc(50% - 40px)' }}
             >
@@ -84,13 +94,13 @@ const Sidebar  = () => {
           <hr className='w-[160px] my-2 mx-auto border-black' />
           <div className='bg-inherit flex justify-center gap-14'>
             <button
-              className={`h-6 w-14 m-1 rounded-sm ${filters.successfulLaunch === true ? 'bg-green-800 text-white' : 'bg-green-400'}`}
+              className={`h-8 w-14 m-1 rounded-md transition ease-out hover:bg-green-800 hover:text-white ${filters.successfulLaunch === true ? 'bg-green-800 text-white' : 'bg-green-400'}`}
               onClick={handleLaunchSuccess}
             >
               True
             </button>
             <button
-              className={`h-6 w-14 m-1 rounded-sm ${filters.successfulLaunch === false ? 'bg-green-800 text-white' : 'bg-green-400'}`}
+              className={`h-8 w-14 m-1 rounded-md transition ease-out hover:bg-green-800 hover:text-white ${filters.successfulLaunch === false ? 'bg-green-800 text-white' : 'bg-green-400'}`}
               onClick={handleLaunchFail}
             >
               False
@@ -102,18 +112,26 @@ const Sidebar  = () => {
           <hr className='w-[160px] my-2 mx-auto border-black' />
           <div className='bg-inherit flex justify-center gap-14'>
             <button
-              className={`h-6 w-14 m-1 rounded-sm ${filters.successfulLanding === true ? 'bg-green-800 text-white' : 'bg-green-400'}`}
+              className={`h-8 w-14 m-1 rounded-md transition ease-out hover:bg-green-800 hover:text-white ${filters.successfulLanding === true ? 'bg-green-800 text-white' : 'bg-green-400'}`}
               onClick={handleLandSuccess}
             >
               True
             </button>
             <button
-              className={`h-6 w-14 m-1 rounded-sm ${filters.successfulLanding === false ? 'bg-green-800 text-white' : 'bg-green-400'}`}
+              className={`h-8 w-14 m-1 rounded-md transition ease-out hover:bg-green-800 hover:text-white ${filters.successfulLanding === false ? 'bg-green-800 text-white' : 'bg-green-400'}`}
               onClick={handleLandFail}
             >
               False
             </button>
           </div>
+        </div>
+        <div className=' bg-white flex justify-center items-center flex-wrap mt-6'>
+          <button 
+          className='h-10 w-auto px-4 bg-indigo-500 rounded-md text-white transition ease-out hover:bg-indigo-900'
+          onClick={handleFilters}
+          >
+            Reset Filters
+          </button>
         </div>
       </div>
       <div className='flex flex-col items-center mx-2 md:mt-2 mt-4'>
