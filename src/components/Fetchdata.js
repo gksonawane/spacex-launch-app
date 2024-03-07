@@ -6,7 +6,7 @@ const Fetchdata = ({ filters }) => {
   const [launches, setLaunches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const perPage = 8;
+  const perPage = 10;
 
   useEffect(() => {
     setLoading(true);
@@ -91,7 +91,7 @@ const Fetchdata = ({ filters }) => {
         >
           Prev
         </button>
-        <div className={`sm:flex sm:flex-wrap  ${totalPages < 5?'sm:w-full':'w-[305px]'} md:w-auto h-auto overflow-hidden`}>
+        <div className={`sm:flex sm:flex-wrap  ${totalPages < 5?'sm:w-full':'w-[288px]'} md:w-auto h-auto overflow-hidden`}>
         {
           
         [...Array(totalPages)].map((_,idx) => (
