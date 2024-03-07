@@ -10,7 +10,7 @@ const Fetchdata = ({ filters }) => {
 
   useEffect(() => {
     setLoading(true);
-    let apiUrl = `https://api.spaceXdata.com/v3/launches?limit=${perPage}&offset=${(page - 1) * perPage}`;
+    let apiUrl = `https://api.spaceXdata.com/v3/launches?limit=100&offset=${(page - 1) * perPage}`;
 
     // Applying filters when they are provided
     if (filters) {
@@ -48,6 +48,12 @@ const Fetchdata = ({ filters }) => {
     }
   };
 
+  const pageHandler = (selectedPage) =>{
+    setPage(selectedPage);
+  }
+
+  const totalPages = Math.ceil(launches.length/perPage);
+
   useEffect(() => {
     setPage(1); // Reseting page to 1 when filters change
   }, [filters]);
@@ -77,16 +83,32 @@ const Fetchdata = ({ filters }) => {
         )}
       </div>
       {launches.length > 0 && (
-      <div className='static bottom-0 left-0 right-0 flex justify-center  py-4'>
+      <div className='static bottom-1  flex sm:flex-wrap items-center justify-center border-1  py-4 w-auto'>
         <button
-          className='bg-green-400 px-4 py-2 rounded-lg mr-2 hover:bg-green-800 hover:text-white transition ease-out hover:cursor-pointer'
+          className={`bg-indigo-400 md:px-4 px-2 py-2 rounded-s-lg  ${page === 1?"hidden":""} hover:bg-violet-800 hover:text-white transition ease-out hover:cursor-pointer`}
           onClick={handlePrevPage}
           disabled={page === 1}
         >
           Prev
         </button>
+        <div className={`sm:flex sm:flex-wrap  ${totalPages < 5?'sm:w-full':'w-[305px]'} md:w-auto h-auto overflow-hidden`}>
+        {
+          
+        [...Array(totalPages)].map((_,idx) => (
+            <span
+              key={idx}
+              className={`bg-green-400 mx-2 px-4 py-2 rounded-lg ml-2 hover:bg-yellow-800 hover:text-white hover:cursor-pointer transition ease-out ${
+                idx + 1 === page ? 'bg-green-800 text-white' : ''
+              }`}
+              onClick={() => pageHandler(idx + 1)}
+            >
+              {idx + 1}
+            </span>
+          ))
+        }
+        </div>
         <button
-          className='bg-green-400 px-4 py-2 rounded-lg ml-2 hover:bg-green-800 hover:text-white hover:cursor-pointer transition ease-out'
+          className={`bg-indigo-400 md:px-4 px-2 py-2 ${launches.length < perPage?"hidden":""} rounded-e-lg hover:bg-violet-800 hover:text-white hover:cursor-pointer transition ease-out`}
           onClick={handleNextPage}
           disabled={launches.length < perPage}
         >
@@ -99,4 +121,3 @@ const Fetchdata = ({ filters }) => {
 };
 
 export default Fetchdata;
-
